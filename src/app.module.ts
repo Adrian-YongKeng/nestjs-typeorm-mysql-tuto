@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 
 @Module({
@@ -18,7 +18,7 @@ import { TodosModule } from './todos/todos.module';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        // synchronize: true,
+        synchronize: true,
       }),
       inject: [ConfigService],
     }),
